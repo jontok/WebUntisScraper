@@ -1,0 +1,90 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  color: white;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  width: 100%;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  
+}
+
+.App-main{
+  background-color: #25282c;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(3px + 2vmin);
+}
+
+.card{
+  background-color: #282c34;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.card .card-main{
+  font-size: 16pt;
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .card-footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-footer{
+  min-height: 10vh;
+  background-color: #282c34;
+  width: 100%;
+}
+
+.App-footer a{
+  font-size: 9pt;
+  color: aqua;
+}
+
+/* INPUTS */
+input{
+  font-size: 14pt;
+  margin: .5rem;
+  padding: .2rem;
+  border-radius: .5rem;
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+
+button{
+  border-radius: 50rem;
+  width: max-content;
+  height: max-content;
+  padding: .5rem;
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
