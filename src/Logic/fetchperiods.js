@@ -1,18 +1,20 @@
 import {useState,useEffect} from 'react';
 
-function FetchClasses(props) {
-  const [id, setSchool] = useState([]);
-  const [domain, setDomain] = useState();
-  const [error, setError] = useState(null);
+
+function FetchPeriods(props) {
+    var domain = props.domain;
+    var id = props.id;
+    var classid = props.classid;
+    var date = props.date;
+    const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  setDomain(props.domain);
-  setSchool(props.id);
+
   // Note: the empty deps array [] means
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch(`http://localhost:5000/classes/${domain}/${id}`)
+    fetch(`http://localhost:5000/periods/${domain}/${id}/${classid}/${date}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -34,20 +36,27 @@ function FetchClasses(props) {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-      console.log(items);
     return (
       <table>
           <thead>
-              <th>Class</th>
-              <th>ID</th>
+              <th>Course</th>
+              <th>Date</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Room</th>
+              <th>Changed</th>
           </thead>
           <tbody>
-        {items.course.map(item => (
-            <tr>
-            <td key={item.id}>
-                        {item.name} 
-                    </td>
-                   <td>{item.id}</td>
+        {items.periods.map(item => (
+
+            <tr key={item.id}>
+                   <td>{item.name}</td>
+                   <td>{item.date}</td>
+                   <td>{item.start}</td>
+                   <td>{item.end}</td>
+                   <td>{item.room}</td>
+                   <td>{(item.changed) ? "Changed" : ""}</td>
+
             </tr>
            ))}
         </tbody>
@@ -57,4 +66,4 @@ function FetchClasses(props) {
 
 }
 
-export default FetchClasses;
+export default FetchPeriods;
