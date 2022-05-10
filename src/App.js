@@ -9,13 +9,18 @@ var dom
 var schid
 
 function App() {
+  // const [id, setSchool] = useState("K175055");
+  // const [domain, setDomain] = useState("hektor.webuntis.com");
+
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => {
     dom = data.Domain;
     schid = data.SchoolId;
+    // setDomain(dom);
+    // setSchool(schid);
+    console.log("done");
   };
   
-  console.log(watch("Domain"));
   return (
     <div className="App">
       <header className="App-header">
@@ -33,7 +38,7 @@ function App() {
       <input placeholder='school id' {...register("SchoolId")} />
       {/* errors will return when field validation fails  */}
       {errors.exampleRequired && <span>This field is required</span>}
-      
+      <FetchClasses id={schid} domain={dom} />
       <input type="submit" />
     </form>
       </div>
@@ -41,8 +46,8 @@ function App() {
       </div>
       
     </div>
-    <FetchClasses id={schid} domain={dom}/>
-    {/* <FetchPeriods id="K175055" domain="hektor.webuntis.com" classid="2025" date="2022-04-02"/> */}
+    
+    <FetchPeriods id="K175055" domain="hektor.webuntis.com" classid="2025" date="2022-04-01"/>
       </main>
       <footer className='App-footer'>
         <a href="https://www.flaticon.com/free-icons/scraper" title="scraper icons">Scraper icons created by Freepik - Flaticon</a>

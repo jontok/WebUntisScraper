@@ -1,17 +1,19 @@
 import {useState,useEffect} from 'react';
 
 function FetchClasses(props) {
-  const [id, setSchool] = useState([]);
-  const [domain, setDomain] = useState();
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  setDomain(props.domain);
-  setSchool(props.id);
+  var [id, setSchool] = useState("K175055");
+  var [domain, setDomain] = useState("hektor.webuntis.com");
+
+  
   // Note: the empty deps array [] means
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
+    setDomain(props.domain);
+    setSchool(props.id);
     fetch(`http://localhost:5000/classes/${domain}/${id}`)
       .then(res => res.json())
       .then(
@@ -34,24 +36,14 @@ function FetchClasses(props) {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-      console.log(items);
     return (
-      <table>
-          <thead>
-              <th>Class</th>
-              <th>ID</th>
-          </thead>
-          <tbody>
-        {items.course.map(item => (
-            <tr>
-            <td key={item.id}>
-                        {item.name} 
-                    </td>
-                   <td>{item.id}</td>
-            </tr>
-           ))}
-        </tbody>
-      </table>
+        <select className='input' >
+          {items.course.map(item => (
+              <option value={item.id} key={item.id}>
+                {item.name} 
+              </option>
+            ))}
+        </select>
     );
   }
 
